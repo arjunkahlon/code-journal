@@ -16,11 +16,65 @@
   <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
-  <header>
-  </header>
-  <main>
-    <div data-view="entry-form">
+  <header class="background-purple">
+    <div class="row container">
+      <div class="column-full">
+        <h2 class="text-white">Code Journal</h2>
+      </div>
 
+    </div>
+  </header>
+  <main class="background-cream">
+    <div class="container">
+      <div class="row entry-form">
+        <form id="journal-entry-form">
+          <div class="row">
+            <div class="column-full">
+              <h2>New Entry</h2>
+            </div>
+          </div>
+          <div class="row">
+            <div class="column-half">
+              <div class="image-container">
+                <img id="placeholder-image" src="./images/placeholder-image-square.jpg"
+                  alt="Entry Image">
+              </div>
+            </div>
+            <div class="column-half">
+              <div id="journal-entry-title">
+                <label for="entry-title" class="display-block text-bold">
+                  Title
+                </label>
+                <input type="text" id="entry-title" name="title" class="display-box entry-box">
+              </div>
+              <div id="journal-entry-photo">
+                <label for="photo-url" class="display-block text-bold">
+                  Photo URL
+                </label>
+                <input type="text" id="photo-url" name="photourl" class="display-block entry-box">
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="column-full">
+              <div id="journal-entry-notes">
+                <label for="entry-notes" class="display-block text-bold">
+                  Notes
+                </label>
+                <textarea id="entry-notes" name="notes"></textarea>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="column-full">
+              <button type="submit" form="journal-entry-form" value="Submit">
+                Save
+              </button>
+            </div>
+
+          </div>
+        </form>
+      </div>
     </div>
   </main>
   <script src="js/data.js"></script>
