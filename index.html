@@ -14,11 +14,74 @@
   <link rel="stylesheet" href="css/reset.css">
   <link rel="stylesheet" href="css/layout.css">
   <link rel="stylesheet" href="css/styles.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
 </head>
-<body>
-  <header>
+<body class="background-cream">
+  <header class="background-purple">
+    <div class="container" id="header">
+      <div class="row">
+        <div class="column-full">
+          <h2 class="text-white font-open-sans">Code Journal</h2>
+        </div>
+      </div>
+    </div>
   </header>
   <main>
+    <div class="container">
+      <div class="row entry-form">
+        <form id="journal-entry-form">
+          <div class="row">
+            <div class="column-full">
+              <h2 class="font-open-sans">New Entry</h2>
+            </div>
+          </div>
+          <div class="row">
+            <div class="column-half">
+              <div class="image-container">
+                <img id="placeholder-image" src="./images/placeholder-image-square.jpg"
+                  alt="Entry Image">
+              </div>
+            </div>
+            <div class="column-half">
+              <div id="journal-entry-title">
+                <label for="entry-title" class="display-block text-bold font-open-sans">
+                  Title
+                </label>
+                <input required type="text" id="entry-title" name="title" class="display-box entry-box">
+              </div>
+              <div id="journal-entry-photo">
+                <label for="photo-url" class="display-block text-bold font-open-sans">
+                  Photo URL
+                </label>
+                <input required type="text" id="photo-url" name="photoUrl" class="display-block entry-box">
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="column-full">
+              <div id="journal-entry-notes">
+                <label for="entry-notes" class="display-block text-bold font-open-sans">
+                  Notes
+                </label>
+                <textarea required id="entry-notes" name="notes"></textarea>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="column-full">
+              <div class="entry-button-wrapper">
+                <button id="entry-button" type="submit" form="journal-entry-form"
+                value="Submit" class="text-right background-purple text-white font-open-sans">
+                  SAVE
+                </button>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
   </main>
   <script src="js/data.js"></script>
   <script src="js/main.js"></script>
