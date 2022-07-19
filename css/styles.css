@@ -33,6 +33,10 @@
   border-color: lightgray;
 }
 
+#entry-notes:focus {
+  outline-color: rgb(85, 43, 129);
+}
+
 .entry-button-wrapper {
   text-align: right;
   padding-bottom: 1em;
