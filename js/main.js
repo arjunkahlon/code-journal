@@ -11,7 +11,7 @@ function handleSubmit(event) {
   journalEntry.title = $entryForm.elements.title.value;
   journalEntry.photoURL = $entryForm.elements.photoUrl.value;
   journalEntry.notes = $entryForm.elements.notes.value;
-  journalEntry.nextEntryId = data.nextEntryId;
+  journalEntry.entryID = data.nextEntryId;
   data.nextEntryId++;
   data.entries.unshift(journalEntry);
   resetPlaceholder($photoPlaceholder);
