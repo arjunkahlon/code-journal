@@ -6,16 +6,6 @@
   object-fit: cover;
 }
 
-/* Background Selectors */
-
-.background-purple {
-  background-color: rgb(86, 43, 129);
-}
-
-.background-cream {
-  background-color: rgb(240, 240, 240);
-}
-
 /* Input Field Selectors */
 .entry-box {
   width: 100%;
@@ -41,10 +31,6 @@
   border-width: 2px;
   border-radius: 5px;
   border-color: lightgray;
-}
-
-.outline-entry-notes {
-  border-color: purple;
 }
 
 .entry-button-wrapper {
@@ -73,7 +59,17 @@
   font-weight: bold;
 }
 
-/* Font */
+/* Font Selectors */
 .font-open-sans {
   font-family: "Open Sans", sans-serif;
+}
+
+/* Background Selectors */
+
+.background-purple {
+  background-color: rgb(86, 43, 129);
+}
+
+.background-cream {
+  background-color: rgb(240, 240, 240);
 }
