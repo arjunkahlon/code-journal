@@ -22,12 +22,29 @@
   width: 100%;
 }
 
+.column-fluid {
+  flex-basis: auto;
+}
+
 .display-block {
   display: block;
 }
 
+.display-inline {
+  display: inline;
+}
+
+.display-inline-block {
+  display: inline-block;
+}
+
 .center {
   align-items: center;
+  justify-content: center;
+}
+
+.space-between {
+  justify-content: space-between;
 }
 
 @media screen and (min-width: 768px) {
@@ -42,5 +59,9 @@
 
   .column-half {
     width: 50%;
+  }
+
+  .entry-wrapper h2 {
+    margin-top: 0;
   }
 }
