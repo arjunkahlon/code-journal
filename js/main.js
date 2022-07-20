@@ -20,7 +20,7 @@ function handleSubmit(event) {
   data.entries.unshift(journalEntry);
   resetPlaceholder($photoPlaceholder);
   $entryForm.reset();
-  renderEntry();
+  renderLatestEntry();
   viewSwap('entries');
   data.view = 'entries';
 }
@@ -46,6 +46,7 @@ window.addEventListener('DOMContentLoaded', renderEntries);
 function createEntryTree(entry) {
   var entryLi = document.createElement('li');
   entryLi.setAttribute('class', 'list-entry');
+  entryLi.setAttribute('data-entry-id', entry.entryID);
 
   var rootDiv = document.createElement('div');
   rootDiv.setAttribute('class', 'row');
@@ -100,7 +101,7 @@ function createEntryTree(entry) {
   return entryLi;
 }
 
-function renderEntry() {
+function renderLatestEntry() {
   var $renderedList = document.querySelector('.entries-list');
   var latestEntry = createEntryTree(data.entries[0]);
   $renderedList.prepend(latestEntry);
