@@ -20,6 +20,7 @@ function handleSubmit(event) {
   $entryForm.reset();
   renderEntry();
   viewSwap('entries');
+  data.view = 'entries';
 }
 
 // Placeholder Handling
@@ -88,6 +89,12 @@ function renderEntry() {
 }
 
 function renderEntries() {
+  var $noEntries = document.querySelector('.no-entries');
+
+  if (data.entries.length === 0) {
+    $noEntries.classList.remove('hidden');
+
+  }
   var $entryList = document.querySelector('.entries-list');
   for (let i = 0; i < data.entries.length; i++) {
     var createdEntry = createEntryTree(data.entries[i]);
@@ -96,7 +103,6 @@ function renderEntries() {
 }
 
 // Views Handling
-
 var views = document.querySelectorAll('.view');
 
 var $entriesNav = document.querySelector('#nav-entries');
@@ -107,10 +113,12 @@ $entryNew.addEventListener('click', viewEntryForm);
 
 function viewEntries(event) {
   viewSwap('entries');
+  data.view = 'entries';
 }
 
 function viewEntryForm(event) {
   viewSwap('entry-form');
+  data.view = 'entry-form';
 }
 
 function viewSwap(view) {
@@ -121,4 +129,9 @@ function viewSwap(view) {
       views[i].classList.add('hidden');
     }
   }
+}
+loadCurrentView();
+
+function loadCurrentView() {
+  viewSwap(data.view);
 }
