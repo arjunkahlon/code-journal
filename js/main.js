@@ -71,10 +71,26 @@ function createEntryTree(entry) {
   entryWrap.setAttribute('class', 'entry-wrapper');
   colHalf2.appendChild(entryWrap);
 
+  var titleRow = document.createElement('div');
+  titleRow.setAttribute('class', 'row');
+  entryWrap.appendChild(titleRow);
+
+  var colTitle = document.createElement('div');
+  colTitle.setAttribute('class', 'column-90');
+  titleRow.appendChild(colTitle);
+
   var entryTitle = document.createElement('h2');
-  entryTitle.setAttribute('class', 'font-open-sans text-bold font-size-x-large');
+  entryTitle.setAttribute('class', 'font-open-sans text-bold font-size-large');
   entryTitle.textContent = entry.title;
-  entryWrap.appendChild(entryTitle);
+  colTitle.appendChild(entryTitle);
+
+  var colIcon = document.createElement('div');
+  colIcon.setAttribute('class', 'column-10');
+  titleRow.appendChild(colIcon);
+
+  var editIcon = document.createElement('i');
+  editIcon.classList = 'edit-icon fa fa-pencil purple';
+  colIcon.append(editIcon);
 
   var entryNotes = document.createElement('p');
   entryNotes.setAttribute('class', 'font-open-sans');

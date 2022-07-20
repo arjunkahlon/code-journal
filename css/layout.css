@@ -26,6 +26,14 @@
   flex-basis: auto;
 }
 
+.column-90 {
+  flex-basis: 90%;
+}
+
+.column-10 {
+  flex-basis: 10%;
+}
+
 .display-block {
   display: block;
 }

@@ -127,3 +127,11 @@ html {
 .background-cream {
   background-color: rgb(240, 240, 240);
 }
+
+/* Icon Selector */
+.edit-icon {
+  font-size: 18px;
+  color: purple;
+  padding-left: 0.6em;
+  padding-top: 0.1em;
+}
