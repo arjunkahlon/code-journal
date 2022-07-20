@@ -86,3 +86,31 @@ function renderEntries() {
     $entryList.appendChild(createdEntry);
   }
 }
+
+// Views Handling
+
+var views = document.querySelectorAll('.view');
+
+var $entriesNav = document.querySelector('#nav-entries');
+$entriesNav.addEventListener('click', viewEntries);
+
+var $entryNew = document.querySelector('#new-entry-button');
+$entryNew.addEventListener('click', viewEntryForm);
+
+function viewEntries(event) {
+  viewSwap('entries');
+}
+
+function viewEntryForm(event) {
+  viewSwap('entry-form');
+}
+
+function viewSwap(view) {
+  for (let i = 0; i < views.length; i++) {
+    if (view === views[i].getAttribute('data-view')) {
+      views[i].classList.remove('hidden');
+    } else {
+      views[i].classList.add('hidden');
+    }
+  }
+}

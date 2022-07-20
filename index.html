@@ -26,7 +26,8 @@
           <h2 class="text-white font-open-sans font-size-large display-inline-block">
             Code Journal
           </h2>
-          <h3 class="nav-entries text-white display-inline-block font-open-sans">
+          <h3 class="text-white display-inline-block font-open-sans"
+          id="nav-entries" data-view="entries">
             Entries
           </h3>
         </div>
@@ -35,7 +36,7 @@
   </header>
   <main>
     <div class="container">
-      <div data-view="entries">
+      <div class="view" data-view="entries">
         <div id="entries-wrapper">
           <div class="row space-between">
             <div class="column-fluid">
@@ -47,7 +48,8 @@
             </div>
             <div class="column-fluid add-top-padding-2">
               <div class="entry-button-wrapper display-inline-block">
-                <button id="new-entry-button" class="entry-button text-white background-purple font-open-sans">
+                <button id="new-entry-button" data-view="entry-form"
+                class="entry-button text-white background-purple font-open-sans">
                   NEW
                 </button>
               </div>
@@ -60,7 +62,7 @@
           </div>
         </div>
       </div>
-      <div class="row hidden" data-view="entry-form">
+      <div class="row view hidden" data-view="entry-form">
         <form id="journal-entry-form">
           <div class="row">
             <div class="column-full">
