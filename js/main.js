@@ -158,11 +158,28 @@ function loadCurrentView() {
 var $entriesList = document.querySelector('.entries-list');
 // console.log($entriesList);
 
-$entriesList.addEventListener('click', clickList);
+$entriesList.addEventListener('click', clickEdit);
 
-function clickList(event) {
-  if (event.target.tagName === 'I') {
-    viewEntryForm();
+function clickEdit(event) {
+  if (event.target.tagName !== 'I') {
+    return;
+  }
+  viewEntryForm();
+  editEntry(event);
+}
 
+function editEntry(event) {
+  var clickedEntry = event.target.closest('li');
+  var clickId = clickedEntry.getAttribute('data-entry-id');
+  data.editing = grabEntryByID(clickId);
+  // console.log(data.editing);
+}
+
+function grabEntryByID(idArg) {
+  var keyID = parseInt(idArg);
+  for (let i = 0; i < data.entries.length; i++) {
+    if (data.entries[i].entryID === keyID) {
+      return data.entries[i];
+    }
   }
 }
