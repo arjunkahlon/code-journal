@@ -6,6 +6,11 @@
   object-fit: cover;
 }
 
+/* Nav Selectors */
+.nav-entries {
+  margin-left: 1em;
+}
+
 /* Input Field Selectors */
 .entry-box {
   width: 100%;
@@ -55,32 +60,8 @@
 
 /* Padding/Margin Selectors */
 
-.remove-top-margin {
-  margin-top: 0;
-}
-
-.remove-bottom-margin {
-  margin-bottom: 0;
-}
-
-.remove-top-padding {
-  padding-top: 0;
-}
-
-.remove-bottom-padding {
-  padding-bottom: 0;
-}
-
-.add-top-margin-1 {
-  margin-top: 1em;
-}
-
 .add-top-padding-2 {
   padding-top: 2em;
-}
-
-.add-bottom-margin {
-  margin-bottom: 2em;
 }
 
 /* List Selectors */
@@ -119,6 +100,10 @@
 /* Font Selectors */
 .font-open-sans {
   font-family: "Open Sans", sans-serif;
+}
+
+.font-size-large {
+  font-size: large;
 }
 
 .font-size-x-large {
