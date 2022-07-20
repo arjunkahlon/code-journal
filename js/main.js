@@ -18,6 +18,8 @@ function handleSubmit(event) {
   data.entries.unshift(journalEntry);
   resetPlaceholder($photoPlaceholder);
   $entryForm.reset();
+  renderEntry();
+  viewSwap('entries');
 }
 
 // Placeholder Handling
@@ -38,7 +40,7 @@ function resetPlaceholder(placeholder) {
 
 window.addEventListener('DOMContentLoaded', renderEntries);
 
-function renderEntry(entry) {
+function createEntryTree(entry) {
   var entryLi = document.createElement('li');
   entryLi.setAttribute('class', 'list-entry');
 
@@ -79,10 +81,16 @@ function renderEntry(entry) {
   return entryLi;
 }
 
+function renderEntry() {
+  var $renderedList = document.querySelector('.entries-list');
+  var latestEntry = createEntryTree(data.entries[0]);
+  $renderedList.prepend(latestEntry);
+}
+
 function renderEntries() {
   var $entryList = document.querySelector('.entries-list');
   for (let i = 0; i < data.entries.length; i++) {
-    var createdEntry = renderEntry(data.entries[i]);
+    var createdEntry = createEntryTree(data.entries[i]);
     $entryList.appendChild(createdEntry);
   }
 }
