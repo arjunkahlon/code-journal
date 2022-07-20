@@ -31,90 +31,92 @@
   <main>
     <div class="container">
       <div data-view="entries">
-        <div class="row space-between">
-          <div class="column-fluid">
-            <div>
-              <h2 class="font-open-sans font-size-xx-large text-bold" id="entries-header">
-                Entries
-              </h2>
+        <div id="entries-wrapper">
+          <div class="row space-between">
+            <div class="column-fluid">
+              <div>
+                <h2 class="font-open-sans font-size-xx-large text-bold" id="entries-header">
+                  Entries
+                </h2>
+              </div>
+            </div>
+            <div class="column-fluid add-top-padding-2">
+              <div class="entry-button-wrapper display-inline-block">
+                <button id="new-entry-button" class="entry-button text-white background-purple font-open-sans">
+                  NEW
+                </button>
+              </div>
             </div>
           </div>
-          <div class="column-fluid add-top-padding-2">
-            <div class="entry-button-wrapper display-inline-block">
-              <button id="new-entry-button" class="entry-button text-white background-purple font-open-sans">
-                NEW
-              </button>
+          <div class="row">
+            <div class="column-full list-container">
+              <ul class="entries-list no-list-style display-inline">
+                <!-- <li class="list-entry">
+                  <div class="row">
+                    <div class="column-half">
+                      <div class="image-container">
+                        <img
+                          src="https://rimage.gnst.jp/livejapan.com/public/article/detail/a/00/00/a0000370/img/basic/a0000370_main.jpg?20201002142956&q=80&rw=750&rh=536"
+                          alt="sushi">
+                      </div>
+                    </div>
+                    <div class="column-half">
+                      <div class="entry-wrapper">
+                        <h2 class="font-open-sans text-bold font-size-x-large">Sushi is so good</h2>
+                        <p class="font-open-sans">
+                          I love sushi. It is delicious and nutritious. I love to eat sushi rolls and sashimi. Wasabi
+                          is great also even though it messes with my sinuses.
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </li>
+                <li class="list-entry">
+                  <div class="row">
+                    <div class="column-half">
+                      <div class="image-container">
+                        <img
+                          src="https://a.cdn-hotels.com/gdcs/production101/d154/ee893f00-c31d-11e8-9739-0242ac110006.jpg?impolicy=fcrop&w=800&h=533&q=medium"
+                          alt="NYC Photo">
+                      </div>
+                    </div>
+                    <div class="column-half">
+                      <div class="entry-wrapper">
+                        <h2 class="font-open-sans text-bold font-size-x-large">I Love NY!</h2>
+                        <p class="font-open-sans">
+                          I really enjoyed my vacation to New York. I got to visit historical landmarks such as the Empire State
+                          Building and Statue of Liberty. I also saw Broadway performances of Phantom of the Opera and Hamilton.
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </li>
+                <li class="list-entry">
+                  <div class="row">
+                    <div class="column-half">
+                      <div class="image-container">
+                        <img
+                          src="https://s.yimg.com/uu/api/res/1.2/srzNZC6G0o5fPWHX7q..Sg--~B/aD0yNzk7dz00OTQ7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/nbcsports.com/b10ad2bc11df32d951149019e7f3324e"
+                          alt="Lakers Big 3">
+                      </div>
+                    </div>
+                    <div class="column-half">
+                      <div class="entry-wrapper">
+                        <h2 class="entry header font-open-sans text-bold font-size-x-large">Lakers Big 3</h2>
+                        <p class="font-open-sans">
+                          I guess Russel Westbrook is staying with the Lakers. Oh well, I was really hoping we would trade for
+                          Kyrie Irving. I guess LeBron will have to figure out a way to make it work.
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </li> -->
+              </ul>
             </div>
-          </div>
-        </div>
-        <div class="row">
-          <div class="column-full list-container">
-            <ul class="no-list-style display-inline">
-              <li class="list-entry">
-                <div class="row">
-                  <div class="column-half">
-                    <div class="image-container">
-                      <img
-                        src="https://rimage.gnst.jp/livejapan.com/public/article/detail/a/00/00/a0000370/img/basic/a0000370_main.jpg?20201002142956&q=80&rw=750&rh=536"
-                        alt="sushi">
-                    </div>
-                  </div>
-                  <div class="column-half">
-                    <div class="entry-wrapper">
-                      <h2 class="font-open-sans text-bold font-size-x-large">Sushi is so good</h2>
-                      <p class="font-open-sans">
-                        I love sushi. It is delicious and nutritious. I love to eat sushi rolls and sashimi. Wasabi
-                        is great also even though it messes with my sinuses.
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              </li>
-              <li class="list-entry">
-                <div class="row">
-                  <div class="column-half">
-                    <div class="image-container">
-                      <img
-                        src="https://a.cdn-hotels.com/gdcs/production101/d154/ee893f00-c31d-11e8-9739-0242ac110006.jpg?impolicy=fcrop&w=800&h=533&q=medium"
-                        alt="NYC Photo">
-                    </div>
-                  </div>
-                  <div class="column-half">
-                    <div class="entry-wrapper">
-                      <h2 class="font-open-sans text-bold font-size-x-large">I Love NY!</h2>
-                      <p class="font-open-sans">
-                        I really enjoyed my vacation to New York. I got to visit historical landmarks such as the Empire State
-                        Building and Statue of Liberty. I also saw Broadway performances of Phantom of the Opera and Hamilton.
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              </li>
-              <li class="list-entry">
-                <div class="row">
-                  <div class="column-half">
-                    <div class="image-container">
-                      <img
-                        src="https://s.yimg.com/uu/api/res/1.2/srzNZC6G0o5fPWHX7q..Sg--~B/aD0yNzk7dz00OTQ7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/en/nbcsports.com/b10ad2bc11df32d951149019e7f3324e"
-                        alt="Lakers Big 3">
-                    </div>
-                  </div>
-                  <div class="column-half">
-                    <div class="entry-wrapper">
-                      <h2 class="entry header font-open-sans text-bold font-size-x-large">Lakers Big 3</h2>
-                      <p class="font-open-sans">
-                        I guess Russel Westbrook is staying with the Lakers. Oh well, I was really hoping we would trade for
-                        Kyrie Irving. I guess LeBron will have to figure out a way to make it work.
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              </li>
-            </ul>
           </div>
         </div>
       </div>
-      <div class="row" data-view="entry-form">
+      <div class="row hidden" data-view="entry-form">
         <form id="journal-entry-form">
           <div class="row">
             <div class="column-full">
