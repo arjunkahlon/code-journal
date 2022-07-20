@@ -5,6 +5,8 @@ $photoURl.addEventListener('input', handlePhotoInput);
 var $entryForm = document.querySelector('#journal-entry-form');
 $entryForm.addEventListener('submit', handleSubmit);
 
+var $noEntries = document.querySelector('.no-entries');
+
 // Submission Event Handle
 
 function handleSubmit(event) {
@@ -89,11 +91,9 @@ function renderEntry() {
 }
 
 function renderEntries() {
-  var $noEntries = document.querySelector('.no-entries');
-
   if (data.entries.length === 0) {
     $noEntries.classList.remove('hidden');
-
+    return;
   }
   var $entryList = document.querySelector('.entries-list');
   for (let i = 0; i < data.entries.length; i++) {
