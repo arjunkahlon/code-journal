@@ -161,5 +161,5 @@ var $entriesList = document.querySelector('.entries-list');
 $entriesList.addEventListener('click', clickList);
 
 function clickList(event) {
-  // console.log('Clicked work');
+  viewEntryForm();
 }
