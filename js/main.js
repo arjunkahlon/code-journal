@@ -161,5 +161,8 @@ var $entriesList = document.querySelector('.entries-list');
 $entriesList.addEventListener('click', clickList);
 
 function clickList(event) {
-  viewEntryForm();
+  if (event.target.tagName === 'I') {
+    viewEntryForm();
+
+  }
 }
