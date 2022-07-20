@@ -173,6 +173,9 @@ function editEntry(event) {
   var clickId = clickedEntry.getAttribute('data-entry-id');
   data.editing = grabEntryByID(clickId);
   // console.log(data.editing);
+  $entryForm.elements.title.value = data.editing.title;
+  $entryForm.elements.photoUrl.value = data.editing.photoURL;
+  $entryForm.elements.notes.value = data.editing.notes;
 }
 
 function grabEntryByID(idArg) {
