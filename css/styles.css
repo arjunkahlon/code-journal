@@ -1,9 +1,18 @@
+html {
+  scroll-behavior: smooth;
+}
+
 /* Image Selectors */
 
 .image-container > img {
   width: 100%;
   max-height: auto;
   object-fit: cover;
+}
+
+/* Nav Selectors */
+#nav-entries {
+  margin-left: 1em;
 }
 
 /* Input Field Selectors */
@@ -39,20 +48,49 @@
 
 .entry-button-wrapper {
   text-align: right;
-  padding-bottom: 1em;
 }
 
-#entry-button {
+.entry-button {
   border-style: none;
   border-radius: 5px;
   padding: 0.5em 1.5em;
   font-size: 14px;
 }
 
+#new-entry-button {
+  padding: 0.5em 1.5em;
+  font-size: 14px;
+}
+
+/* Padding/Margin Selectors */
+
+.add-top-padding-2 {
+  padding-top: 2em;
+}
+
+/* List Selectors */
+
+.list-container {
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.no-list-style {
+  list-style: none;
+}
+
+.list-entry {
+  margin-bottom: 2em;
+}
+
 /* Text Selectors */
 
 .text-center {
   text-align: center;
+}
+
+.text-right {
+  text-align: right;
 }
 
 .text-white {
@@ -66,6 +104,18 @@
 /* Font Selectors */
 .font-open-sans {
   font-family: "Open Sans", sans-serif;
+}
+
+.font-size-large {
+  font-size: large;
+}
+
+.font-size-x-large {
+  font-size: x-large;
+}
+
+.font-size-xx-large {
+  font-size: xx-large;
 }
 
 /* Background Selectors */

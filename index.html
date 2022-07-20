@@ -22,15 +22,50 @@
   <header class="background-purple">
     <div class="container" id="header">
       <div class="row">
-        <div class="column-full">
-          <h2 class="text-white font-open-sans">Code Journal</h2>
+        <div class="column-full navbar">
+          <h2 class="text-white font-open-sans font-size-large display-inline-block">
+            Code Journal
+          </h2>
+          <h3 class="text-white display-inline-block font-open-sans"
+          id="nav-entries" data-view="entries">
+            Entries
+          </h3>
         </div>
       </div>
     </div>
   </header>
   <main>
     <div class="container">
-      <div class="row entry-form">
+      <div class="view" data-view="entries">
+        <div id="entries-wrapper">
+          <div class="row space-between">
+            <div class="column-fluid">
+              <div>
+                <h2 class="font-open-sans font-size-xx-large text-bold" id="entries-header">
+                  Entries
+                </h2>
+              </div>
+            </div>
+            <div class="column-fluid add-top-padding-2">
+              <div class="entry-button-wrapper display-inline-block">
+                <button id="new-entry-button" data-view="entry-form"
+                class="entry-button text-white background-purple font-open-sans">
+                  NEW
+                </button>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="column-full list-container">
+              <ul class="entries-list no-list-style display-inline"></ul>
+              <p class="no-entries text-center font-size-large font-open-sans hidden">
+                No entries have been recorded
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row view hidden" data-view="entry-form">
         <form id="journal-entry-form">
           <div class="row">
             <div class="column-full">
@@ -73,7 +108,7 @@
             <div class="column-full">
               <div class="entry-button-wrapper">
                 <button id="entry-button" type="submit" form="journal-entry-form"
-                value="Submit" class="text-right background-purple text-white font-open-sans">
+                value="Submit" class="entry-button text-right background-purple text-white font-open-sans">
                   SAVE
                 </button>
               </div>
