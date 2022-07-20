@@ -152,3 +152,14 @@ loadCurrentView();
 function loadCurrentView() {
   viewSwap(data.view);
 }
+
+// Edit Handling
+
+var $entriesList = document.querySelector('.entries-list');
+// console.log($entriesList);
+
+$entriesList.addEventListener('click', clickList);
+
+function clickList(event) {
+  // console.log('Clicked work');
+}
