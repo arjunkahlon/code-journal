@@ -4,7 +4,8 @@ $photoURl.addEventListener('input', handlePhotoInput);
 
 var $entryForm = document.querySelector('#journal-entry-form');
 $entryForm.addEventListener('submit', handleSubmit);
-renderEntryList();
+
+// Submission Event Handle
 
 function handleSubmit(event) {
   event.preventDefault();
@@ -19,6 +20,8 @@ function handleSubmit(event) {
   $entryForm.reset();
 }
 
+// Placeholder Handling
+
 function handlePhotoInput(event) {
   if (event.target.value) {
     $photoPlaceholder.setAttribute('src', $photoURl.value);
@@ -30,6 +33,10 @@ function handlePhotoInput(event) {
 function resetPlaceholder(placeholder) {
   placeholder.setAttribute('src', './images/placeholder-image-square.jpg');
 }
+
+// Dom Creation Functionality
+
+window.addEventListener('DOMContentLoaded', renderEntries);
 
 function renderEntry(entry) {
   var entryLi = document.createElement('li');
@@ -72,7 +79,7 @@ function renderEntry(entry) {
   return entryLi;
 }
 
-function renderEntryList() {
+function renderEntries() {
   var $entryList = document.querySelector('.entries-list');
   for (let i = 0; i < data.entries.length; i++) {
     var createdEntry = renderEntry(data.entries[i]);
