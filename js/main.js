@@ -229,9 +229,14 @@ function grabEntryByID(idArg) {
 
 var $deleteEntry = document.querySelector('#delete-button');
 $deleteEntry.addEventListener('click', handleDeleteClick);
+var $overlay = document.querySelector('.overlay');
+var $cancelDelete = document.querySelector('#cancel-delete');
+// var $confirmDelete = document.querySelector('#confirm-delete');
+
+$cancelDelete.addEventListener('click', clickCancel);
 
 function handleDeleteClick(event) {
-  // console.log('delete?');
+  displayOverlay();
 }
 
 function showDeleteOption() {
@@ -240,4 +245,22 @@ function showDeleteOption() {
   } else {
     $deleteEntry.classList.add('hidden');
   }
+}
+
+function clickCancel(event) {
+  if (event.target.tagName === 'BUTTON') {
+    closeOverlay();
+  }
+}
+
+function closeOverlay(event) {
+  hideOverlay();
+}
+
+function displayOverlay() {
+  $overlay.classList.remove('hidden');
+}
+
+function hideOverlay() {
+  $overlay.classList.add('hidden');
 }
