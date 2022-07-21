@@ -20,7 +20,7 @@ function handleSubmit(event) {
     journalEntry.entryID = data.nextEntryId;
     data.nextEntryId++;
     data.entries.unshift(journalEntry);
-    hideNoEntries();
+    viewNoEntries();
     renderEntry();
   } else {
     data.editing.title = journalEntry.title;
@@ -123,7 +123,7 @@ function renderEntry() {
 }
 
 function renderEntries() {
-  showNoEntries();
+  viewNoEntries();
   if (data.entries !== 0) {
     var $entryList = document.querySelector('.entries-list');
     for (let i = 0; i < data.entries.length; i++) {
@@ -138,14 +138,10 @@ function createSelectorFromID(replaceID) {
   return selector;
 }
 
-function showNoEntries() {
+function viewNoEntries() {
   if (data.entries.length === 0) {
     $noEntries.classList.remove('hidden');
-  }
-}
-
-function hideNoEntries() {
-  if (data.entries.length !== 0) {
+  } else {
     $noEntries.classList.add('hidden');
   }
 }
