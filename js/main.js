@@ -6,7 +6,6 @@ var $entryForm = document.querySelector('#journal-entry-form');
 $entryForm.addEventListener('submit', handleSubmit);
 
 var $noEntries = document.querySelector('.no-entries');
-
 // Submission Event Handle
 
 function handleSubmit(event) {
@@ -15,12 +14,20 @@ function handleSubmit(event) {
   journalEntry.title = $entryForm.elements.title.value;
   journalEntry.photoURL = $entryForm.elements.photoUrl.value;
   journalEntry.notes = $entryForm.elements.notes.value;
-  journalEntry.entryID = data.nextEntryId;
-  data.nextEntryId++;
-  data.entries.unshift(journalEntry);
+
+  if (data.editing === null) {
+    journalEntry.entryID = data.nextEntryId;
+    data.nextEntryId++;
+    data.entries.unshift(journalEntry);
+    renderEntry();
+  } else {
+    data.editing.title = journalEntry.title;
+    data.editing.photoURL = journalEntry.photoURL;
+    data.editing.notes = journalEntry.notes;
+    renderEntry();
+  }
   resetPlaceholder($photoPlaceholder);
   $entryForm.reset();
-  renderLatestEntry();
   viewSwap('entries');
   data.view = 'entries';
 }
@@ -101,10 +108,17 @@ function createEntryTree(entry) {
   return entryLi;
 }
 
-function renderLatestEntry() {
+function renderEntry() {
   var $renderedList = document.querySelector('.entries-list');
-  var latestEntry = createEntryTree(data.entries[0]);
-  $renderedList.prepend(latestEntry);
+  if (data.editing === null) {
+    var latestEntry = createEntryTree(data.entries[0]);
+    $renderedList.prepend(latestEntry);
+  } else {
+    var replaceID = data.editing.entryID.toString();
+    var selector = "[data-entry-id='" + replaceID + "']";
+    var $oldEntryDom = document.querySelector(selector);
+    $oldEntryDom.replaceWith(createEntryTree(data.editing));
+  }
 }
 
 function renderEntries() {
@@ -129,11 +143,13 @@ var $entryNew = document.querySelector('#new-entry-button');
 $entryNew.addEventListener('click', viewEntryForm);
 
 function viewEntries(event) {
+  data.editing = null;
   viewSwap('entries');
   data.view = 'entries';
 }
 
 function viewEntryForm(event) {
+  data.editing = null;
   viewSwap('entry-form');
   data.view = 'entry-form';
 }
@@ -176,6 +192,8 @@ function editEntry(event) {
   $entryForm.elements.title.value = data.editing.title;
   $entryForm.elements.photoUrl.value = data.editing.photoURL;
   $entryForm.elements.notes.value = data.editing.notes;
+  $photoPlaceholder.setAttribute('src', data.editing.photoURL);
+
 }
 
 function grabEntryByID(idArg) {
