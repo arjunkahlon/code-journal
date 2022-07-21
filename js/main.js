@@ -15,12 +15,21 @@ function handleSubmit(event) {
   journalEntry.title = $entryForm.elements.title.value;
   journalEntry.photoURL = $entryForm.elements.photoUrl.value;
   journalEntry.notes = $entryForm.elements.notes.value;
-  journalEntry.entryID = data.nextEntryId;
-  data.nextEntryId++;
-  data.entries.unshift(journalEntry);
+
+  if (data.editing === null) {
+    journalEntry.entryID = data.nextEntryId;
+    data.nextEntryId++;
+    data.entries.unshift(journalEntry);
+    viewNoEntries();
+    renderEntry();
+  } else {
+    data.editing.title = journalEntry.title;
+    data.editing.photoURL = journalEntry.photoURL;
+    data.editing.notes = journalEntry.notes;
+    renderEntry();
+  }
   resetPlaceholder($photoPlaceholder);
   $entryForm.reset();
-  renderEntry();
   viewSwap('entries');
   data.view = 'entries';
 }
@@ -46,6 +55,7 @@ window.addEventListener('DOMContentLoaded', renderEntries);
 function createEntryTree(entry) {
   var entryLi = document.createElement('li');
   entryLi.setAttribute('class', 'list-entry');
+  entryLi.setAttribute('data-entry-id', entry.entryID);
 
   var rootDiv = document.createElement('div');
   rootDiv.setAttribute('class', 'row');
@@ -71,10 +81,26 @@ function createEntryTree(entry) {
   entryWrap.setAttribute('class', 'entry-wrapper');
   colHalf2.appendChild(entryWrap);
 
+  var titleRow = document.createElement('div');
+  titleRow.setAttribute('class', 'row');
+  entryWrap.appendChild(titleRow);
+
+  var colTitle = document.createElement('div');
+  colTitle.setAttribute('class', 'column-90');
+  titleRow.appendChild(colTitle);
+
   var entryTitle = document.createElement('h2');
-  entryTitle.setAttribute('class', 'font-open-sans text-bold font-size-x-large');
+  entryTitle.setAttribute('class', 'font-open-sans text-bold font-size-large');
   entryTitle.textContent = entry.title;
-  entryWrap.appendChild(entryTitle);
+  colTitle.appendChild(entryTitle);
+
+  var colIcon = document.createElement('div');
+  colIcon.setAttribute('class', 'column-10');
+  titleRow.appendChild(colIcon);
+
+  var editIcon = document.createElement('i');
+  editIcon.classList = 'edit-icon fa fa-pencil purple';
+  colIcon.append(editIcon);
 
   var entryNotes = document.createElement('p');
   entryNotes.setAttribute('class', 'font-open-sans');
@@ -86,19 +112,37 @@ function createEntryTree(entry) {
 
 function renderEntry() {
   var $renderedList = document.querySelector('.entries-list');
-  var latestEntry = createEntryTree(data.entries[0]);
-  $renderedList.prepend(latestEntry);
+  if (data.editing === null) {
+    var latestEntry = createEntryTree(data.entries[0]);
+    $renderedList.prepend(latestEntry);
+  } else {
+    var replaceID = data.editing.entryID.toString();
+    var $oldEntryDom = document.querySelector(createSelectorFromID(replaceID));
+    $oldEntryDom.replaceWith(createEntryTree(data.editing));
+  }
 }
 
 function renderEntries() {
+  viewNoEntries();
+  if (data.entries !== 0) {
+    var $entryList = document.querySelector('.entries-list');
+    for (let i = 0; i < data.entries.length; i++) {
+      var createdEntry = createEntryTree(data.entries[i]);
+      $entryList.appendChild(createdEntry);
+    }
+  }
+}
+
+function createSelectorFromID(replaceID) {
+  var selector = "[data-entry-id='" + replaceID + "']";
+  return selector;
+}
+
+function viewNoEntries() {
   if (data.entries.length === 0) {
     $noEntries.classList.remove('hidden');
-    return;
-  }
-  var $entryList = document.querySelector('.entries-list');
-  for (let i = 0; i < data.entries.length; i++) {
-    var createdEntry = createEntryTree(data.entries[i]);
-    $entryList.appendChild(createdEntry);
+  } else {
+    $noEntries.classList.add('hidden');
   }
 }
 
@@ -112,11 +156,13 @@ var $entryNew = document.querySelector('#new-entry-button');
 $entryNew.addEventListener('click', viewEntryForm);
 
 function viewEntries(event) {
+  data.editing = null;
   viewSwap('entries');
   data.view = 'entries';
 }
 
 function viewEntryForm(event) {
+  data.editing = null;
   viewSwap('entry-form');
   data.view = 'entry-form';
 }
@@ -134,4 +180,40 @@ loadCurrentView();
 
 function loadCurrentView() {
   viewSwap(data.view);
+}
+
+// Edit Handling
+
+var $entriesList = document.querySelector('.entries-list');
+// console.log($entriesList);
+
+$entriesList.addEventListener('click', clickEdit);
+
+function clickEdit(event) {
+  if (event.target.tagName !== 'I') {
+    return;
+  }
+  viewEntryForm();
+  editEntry(event);
+}
+
+function editEntry(event) {
+  var clickedEntry = event.target.closest('li');
+  var clickId = clickedEntry.getAttribute('data-entry-id');
+  data.editing = grabEntryByID(clickId);
+  // console.log(data.editing);
+  $entryForm.elements.title.value = data.editing.title;
+  $entryForm.elements.photoUrl.value = data.editing.photoURL;
+  $entryForm.elements.notes.value = data.editing.notes;
+  $photoPlaceholder.setAttribute('src', data.editing.photoURL);
+
+}
+
+function grabEntryByID(idArg) {
+  var keyID = parseInt(idArg);
+  for (let i = 0; i < data.entries.length; i++) {
+    if (data.entries[i].entryID === keyID) {
+      return data.entries[i];
+    }
+  }
 }
