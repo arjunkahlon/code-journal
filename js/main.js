@@ -153,16 +153,23 @@ var $entriesNav = document.querySelector('#nav-entries');
 $entriesNav.addEventListener('click', viewEntries);
 
 var $entryNew = document.querySelector('#new-entry-button');
-$entryNew.addEventListener('click', viewEntryForm);
+$entryNew.addEventListener('click', handleNewEntry);
+
+function handleNewEntry(event) {
+  showDeleteOption();
+  data.editing = null;
+  viewEntryForm();
+}
 
 function viewEntries(event) {
   data.editing = null;
+  $entryForm.reset();
+  resetPlaceholder($photoPlaceholder);
   viewSwap('entries');
   data.view = 'entries';
 }
 
 function viewEntryForm(event) {
-  data.editing = null;
   viewSwap('entry-form');
   data.view = 'entry-form';
 }
@@ -185,7 +192,6 @@ function loadCurrentView() {
 // Edit Handling
 
 var $entriesList = document.querySelector('.entries-list');
-// console.log($entriesList);
 
 $entriesList.addEventListener('click', clickEdit);
 
@@ -201,12 +207,13 @@ function editEntry(event) {
   var clickedEntry = event.target.closest('li');
   var clickId = clickedEntry.getAttribute('data-entry-id');
   data.editing = grabEntryByID(clickId);
-  // console.log(data.editing);
-  $entryForm.elements.title.value = data.editing.title;
-  $entryForm.elements.photoUrl.value = data.editing.photoURL;
-  $entryForm.elements.notes.value = data.editing.notes;
-  $photoPlaceholder.setAttribute('src', data.editing.photoURL);
-
+  if (data.editing !== null) {
+    $entryForm.elements.title.value = data.editing.title;
+    $entryForm.elements.photoUrl.value = data.editing.photoURL;
+    $entryForm.elements.notes.value = data.editing.notes;
+    $photoPlaceholder.setAttribute('src', data.editing.photoURL);
+    showDeleteOption();
+  }
 }
 
 function grabEntryByID(idArg) {
@@ -215,5 +222,22 @@ function grabEntryByID(idArg) {
     if (data.entries[i].entryID === keyID) {
       return data.entries[i];
     }
+  }
+}
+
+// Delete Handling
+
+var $deleteEntry = document.querySelector('#delete-button');
+$deleteEntry.addEventListener('click', handleDeleteClick);
+
+function handleDeleteClick(event) {
+  // console.log('delete?');
+}
+
+function showDeleteOption() {
+  if (data.editing !== null) {
+    $deleteEntry.classList.remove('hidden');
+  } else {
+    $deleteEntry.classList.add('hidden');
   }
 }

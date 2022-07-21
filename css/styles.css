@@ -93,8 +93,16 @@ html {
   text-align: right;
 }
 
+.text-underline {
+  text-decoration: underline;
+}
+
 .text-white {
   color: white;
+}
+
+.text-red {
+  color: red;
 }
 
 .text-bold {
