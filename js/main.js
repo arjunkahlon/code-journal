@@ -231,9 +231,10 @@ var $deleteEntry = document.querySelector('#delete-button');
 $deleteEntry.addEventListener('click', handleDeleteClick);
 var $overlay = document.querySelector('.overlay');
 var $cancelDelete = document.querySelector('#cancel-delete');
-// var $confirmDelete = document.querySelector('#confirm-delete');
+var $confirmDelete = document.querySelector('#confirm-delete');
 
 $cancelDelete.addEventListener('click', clickCancel);
+$confirmDelete.addEventListener('click', clickDelete);
 
 function handleDeleteClick(event) {
   displayOverlay();
@@ -248,13 +249,18 @@ function showDeleteOption() {
 }
 
 function clickCancel(event) {
-  if (event.target.tagName === 'BUTTON') {
-    closeOverlay();
+  if (event.target.id === 'cancel-delete' && event.target.tagName === 'BUTTON') {
+    hideOverlay();
   }
 }
 
-function closeOverlay(event) {
-  hideOverlay();
+function clickDelete(event) {
+  if (event.target.id === 'confirm-delete' && event.target.tagName === 'BUTTON') {
+    deleteEntry();
+    hideOverlay();
+    viewEntries();
+
+  }
 }
 
 function displayOverlay() {
@@ -263,4 +269,15 @@ function displayOverlay() {
 
 function hideOverlay() {
   $overlay.classList.add('hidden');
+}
+
+function deleteEntry() {
+  for (let i = 0; i < data.entries.length; i++) {
+    if (data.editing.entryID === data.entries[i].entryID) {
+      var $domDelete = document.querySelector(createSelectorFromID(data.editing.entryID));
+      $domDelete.remove();
+      data.entries.splice(i, 1);
+    }
+  }
+  viewNoEntries();
 }
