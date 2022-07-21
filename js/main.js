@@ -6,6 +6,7 @@ var $entryForm = document.querySelector('#journal-entry-form');
 $entryForm.addEventListener('submit', handleSubmit);
 
 var $noEntries = document.querySelector('.no-entries');
+
 // Submission Event Handle
 
 function handleSubmit(event) {
@@ -19,6 +20,7 @@ function handleSubmit(event) {
     journalEntry.entryID = data.nextEntryId;
     data.nextEntryId++;
     data.entries.unshift(journalEntry);
+    hideNoEntries();
     renderEntry();
   } else {
     data.editing.title = journalEntry.title;
@@ -115,21 +117,36 @@ function renderEntry() {
     $renderedList.prepend(latestEntry);
   } else {
     var replaceID = data.editing.entryID.toString();
-    var selector = "[data-entry-id='" + replaceID + "']";
-    var $oldEntryDom = document.querySelector(selector);
+    var $oldEntryDom = document.querySelector(createSelectorFromID(replaceID));
     $oldEntryDom.replaceWith(createEntryTree(data.editing));
   }
 }
 
 function renderEntries() {
+  showNoEntries();
+  if (data.entries !== 0) {
+    var $entryList = document.querySelector('.entries-list');
+    for (let i = 0; i < data.entries.length; i++) {
+      var createdEntry = createEntryTree(data.entries[i]);
+      $entryList.appendChild(createdEntry);
+    }
+  }
+}
+
+function createSelectorFromID(replaceID) {
+  var selector = "[data-entry-id='" + replaceID + "']";
+  return selector;
+}
+
+function showNoEntries() {
   if (data.entries.length === 0) {
     $noEntries.classList.remove('hidden');
-    return;
   }
-  var $entryList = document.querySelector('.entries-list');
-  for (let i = 0; i < data.entries.length; i++) {
-    var createdEntry = createEntryTree(data.entries[i]);
-    $entryList.appendChild(createdEntry);
+}
+
+function hideNoEntries() {
+  if (data.entries.length !== 0) {
+    $noEntries.classList.add('hidden');
   }
 }
 
