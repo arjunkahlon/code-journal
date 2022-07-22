@@ -66,6 +66,26 @@
         </div>
       </div>
       <div class="row view hidden" data-view="entry-form">
+        <div class="overlay hidden">
+          <div class="row center" id="modal">
+            <div class="column-half">
+              <div class="row">
+                <div class="column-full">
+                  <h3 class="font-open-sans">Are you sure you want to delete this entry?</h3>
+                </div>
+              </div>
+              <div class="row space-between">
+                <div class="column-fluid">
+                  <button id="cancel-delete" class="font-open-sans">CANCEL</button>
+                </div>
+                <div class="column-fluid">
+                  <button id="confirm-delete" class="text-white font-open-sans">CONFIRM</button>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
         <form id="journal-entry-form">
           <div class="row">
             <div class="column-full">
@@ -104,8 +124,13 @@
               </div>
             </div>
           </div>
-          <div class="row">
-            <div class="column-full">
+          <div class="row space-between">
+            <div class="column-fluid">
+              <div class="delete-container">
+                <p id="delete-button" class="hidden text-red text-underline">Delete</p>
+              </div>
+            </div>
+            <div class="column-fluid">
               <div class="entry-button-wrapper">
                 <button id="entry-button" type="submit" form="journal-entry-form"
                 value="Submit" class="entry-button text-right background-purple text-white font-open-sans">
